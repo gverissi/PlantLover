@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 @Data
 @NoArgsConstructor
@@ -17,8 +18,12 @@ public class Compatibility {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotBlank
     private String plantA;
+
+    @NotBlank
     private String plantB;
+
     private RelationEnum relation;
 
     public Compatibility(String plantA, String plantB, RelationEnum relation) {

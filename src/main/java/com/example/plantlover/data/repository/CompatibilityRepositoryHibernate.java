@@ -2,6 +2,7 @@ package com.example.plantlover.data.repository;
 
 import com.example.plantlover.data.dao.CompatibilityDao;
 import com.example.plantlover.domain.entity.Compatibility;
+import com.example.plantlover.domain.entity.RelationEnum;
 import com.example.plantlover.domain.service.CompatibilityRepositoryInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -36,6 +37,16 @@ public class CompatibilityRepositoryHibernate implements CompatibilityRepository
     @Override
     public void delete(Compatibility compatibility) {
         dao.delete(compatibility);
+    }
+
+    @Override
+    public List<Compatibility> findAllAssociations(String plantName, RelationEnum relation) {
+        return dao.findAllAssociations(plantName, relation);
+    }
+
+    @Override
+    public String getRelation(String plantAName, String plantBName) {
+        return dao.getRelation(plantAName, plantBName);
     }
 
 }

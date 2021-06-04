@@ -2,6 +2,7 @@ package com.example.plantlover.domain.service;
 
 import com.example.plantlover.data.repository.DalException;
 import com.example.plantlover.domain.entity.Compatibility;
+import com.example.plantlover.domain.entity.RelationEnum;
 
 import java.util.List;
 
@@ -14,5 +15,9 @@ public interface CompatibilityRepositoryInterface {
     List<Compatibility> findAll();
 
     void delete(Compatibility compatibility);
+
+    List<Compatibility> findAllAssociations(String plantName, RelationEnum relation);
+
+    String getRelation(String plantAName, String plantBName);
 
 }
