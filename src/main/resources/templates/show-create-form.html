@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Compatibilities</title>
+</head>
+<body>
+
+<form th:action="@{/plant-lover/compatibilities/submit-create-form}" th:object="${compatibility}" method="post">
+	<label>Plant A</label>
+	<input type="text" th:field="*{plantA}" title="Plant A">
+	<span th:if="${#fields.hasErrors('plantA')}" th:errors="*{plantA}"></span>
+	<label>Plant B</label>
+	<input type="text" th:field="*{plantB}" title="Plant B">
+	<span th:if="${#fields.hasErrors('plantB')}" th:errors="*{plantB}"></span>
+	<label for="relation">Relation:</label>
+	<select id="relation" th:field="*{relation}">
+		<option th:each="rel : ${relations}" th:value="${rel}" th:text="${rel}">
+		</option>
+	</select>
+	<input type="submit" value="Create">
+</form>
+
+</body>
+</html>

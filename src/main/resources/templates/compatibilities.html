@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Compatibilities</title>
+</head>
+<body>
+
+<div th:switch="${compatibilities}">
+	<h2 th:case="null">No compatibilities. Well not yet!</h2>
+	<div th:case="*">
+		<h2>Compatibilities:</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Plant A</th>
+					<th>Plant B</th>
+					<th>Relation</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="compatibility : ${compatibilities}">
+					<td th:text="${compatibility.plantA}"></td>
+					<td th:text="${compatibility.plantB}"></td>
+					<td th:text="${compatibility.relation}"></td>
+					<td><a th:href="@{/plant-lover/compatibilities/{id}/update (id=${compatibility.id})}">Update</a></td>
+					<td><a th:href="@{/plant-lover/compatibilities/{id}/delete (id=${compatibility.id})}">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p>
+		<a th:href="@{/plant-lover/compatibilities/show-create-form}">Add a new compatibility</a>
+	</p>
+</div>
+
+</body>
+</html>
